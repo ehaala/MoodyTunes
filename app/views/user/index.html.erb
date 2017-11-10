@@ -1,0 +1,22 @@
+<%= form_for :user do |form| %>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mui-textfield">
+                    <%= form.text_field :email, class: 'f', id: 'email' %>
+                    <%= form.label :email, class: '', for: 'email' %>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mui-textfield">
+                    <%= form.password_field :password, class: '', id: 'password' %>
+                    <%= form.label :password, class: '', for: 'password' %>
+                </div>
+            </div>
+        </div>
+
+        <%= form.submit 'SIGN UP', :class => 'mui-btn mui-btn--primary' %>
+        <%end%>
