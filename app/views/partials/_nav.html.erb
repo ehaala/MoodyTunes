@@ -1,0 +1,11 @@
+<nav class="navbar fixed-top navbar-light bg-faded">
+  <a class="navbar-brand" href="/">Project 4</a>
+	
+	<% if @current_user %>
+		<a href="/logout" class="right">Logout</a>
+	<% else %>
+		<a href="/login" class="right">Login</a>
+		<a href="/user" class="right">Sign Up</a>
+	<% end %>
+
+</nav>

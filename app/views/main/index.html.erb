@@ -1,7 +1,24 @@
-<h1>This is our root route</h1>
+<h1>Welcome!</h1>
 
-<a href="/login">Login</a>
-<a href="/user">Sign Up</a>
-<a href="/logout">Logout</a>
+<% if @current_user %>
+	<p>Logged in as: <%= @current_user.try(:email) %></p>
+<% end %>
 
-<p>Logged in as: <%= @current_user.try(:email) %></p>
+<% if !@current_user %>
+	<p>Sign up or Log in!</p>
+<% end %>
+
+<iframe src="https://open.spotify.com/embed?uri=spotify:user:ehaala:playlist:4J8E3JE9pHEalySzCpTDCw"
+        width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+<br />
+
+<img src="https://cdn-s3.si.com/s3fs-public/styles/marquee_large_2x/public/2017/09/15/dirk_nowitzki_marquee_.jpg" height="200px">
+
+<br />
+
+<% @data[0]['faceAttributes']['emotion'].each do |key,value| %>
+	<% if value > 0 %>
+		<p><%= key %>: <%= value  %></p>
+	<% end %>
+<% end %>
