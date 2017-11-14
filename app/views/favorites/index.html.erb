@@ -1,5 +1,5 @@
 <h1>My Playlists</h1>
 
 <% @current_user.favorites.each do |fav| %>
-	<iframe src=<%= fav.url %> width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+	<iframe class="boxshadow" src=<%= fav.url %> width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
 <% end %>

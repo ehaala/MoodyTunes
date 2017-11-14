@@ -1,5 +1,3 @@
-<h1>Welcome!</h1>
-
 <% if @current_user %>
 	<p>Logged in as: <%= @current_user.try(:email) %></p>
 <% end %>
@@ -8,8 +6,16 @@
 	<p>Sign up or Log in!</p>
 <% end %>
 
-<%= form_tag results_path do %>
-  <label for="url">url</label>
-  <%= text_field_tag :url %>
- <%= submit_tag "Submit" %>
-<% end %>
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8 home boxshadow">
+		<p>Welcome to...</p>
+		<h1 class="modak">MoodyTunes</h1>
+		<p>Start by entering an image url below!</p>
+		<%= form_tag results_path do %>
+		  <%= text_field_tag :url %>
+		 <%= submit_tag "Submit" %>
+		<% end %>
+	</div>
+	<div class="col-md-2"></div>
+</div>
