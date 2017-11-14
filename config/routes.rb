@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  root 'user#home'
+
   get 'favorites' => 'favorites#index'
 
-  root 'main#index'
+  get 'search' =>'main#index'
 
   get 'results' => 'main#show'
 

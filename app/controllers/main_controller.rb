@@ -26,17 +26,20 @@ class MainController < ApplicationController
 		# NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
 		request['Ocp-Apim-Subscription-Key'] = ENV['API_KEY']
 		# Request body
-		# request.body = "{\"url\":\"http://images.performgroup.com/di/library/sporting_news/39/82/lebron-james-yell-052217-getty-ftrjpg_1biyl0msydg5s1dqs6vm31t7aq.jpg?t=775653340&w=960&quality=70\"}"
 		request1 = "{\"url\":\""
 		@url = params[:url]
-		# url = "https://cdn-s3.si.com/s3fs-public/styles/marquee_large_2x/public/2017/09/15/dirk_nowitzki_marquee_.jpg"
+		
+		# error handling
+		res = @url.nil? rescue true
+		unless res
 		request3 = "\"}"
 		request.body = request1 + @url + request3
-
 		response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-		    http.request(request)
+		  http.request(request)
 		end
 		@data = JSON.parse(response.body)
+		end
+
   end
 
   def favorite_params

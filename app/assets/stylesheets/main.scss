@@ -19,6 +19,10 @@ body {
 	background: linear-gradient(to right, #556270, #4ECDC4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.button:hover {
+	box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.5), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
 .home {
 	text-align: center;
 	padding: 2%;
@@ -35,8 +39,15 @@ body {
 	background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.upload {
+	width: 90%;
+	height: 90%;
+	object-fit: contain;
+	overflow: hidden;
+}
+
 .navbar {
-	background: black;
+	background: #303030;
 	color: white;
 	border-radius: 0;
 }
