@@ -1,13 +1,50 @@
 <h1>RESULTS</h1>
 
-<iframe src="https://open.spotify.com/embed?uri=spotify:user:ehaala:playlist:4J8E3JE9pHEalySzCpTDCw"
-        width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-
-<br />
-
 <img src="<%= @url %>" height="200px">
 
 <br />
+
+<% if @data[0]['faceAttributes']['emotion']['anger'].to_f > '.3'.to_f %>
+	<p>ANGRY</p>
+	<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3YSRoSdA634" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<% end %>
+
+<% if @data[0]['faceAttributes']['emotion']['contempt'].to_f > '.3'.to_f %>
+	<p>CONTEMPT</p>
+	<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWVu0D7Y8cYcs" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<% end %>
+
+<% if @data[0]['faceAttributes']['emotion']['disgust'].to_f > '.3'.to_f %>
+	<p>DISGUST</p>
+	<p>Move On and Don't Look Back</p>
+	<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWYMvTygsLWlG" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<% end %>
+
+<% if @data[0]['faceAttributes']['emotion']['fear'].to_f > '.3'.to_f %>
+	<p>FEAR</p>
+	<p>Relax and Unwind</p>
+	<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWU0ScTcjJBdj" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<% end %>
+
+<% if @data[0]['faceAttributes']['emotion']['sadness'].to_f > '.3'.to_f %>
+	<p>SAD</p>
+	<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3rxVfibe1L0" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<% end %>
+
+<% if @data[0]['faceAttributes']['emotion']['happiness'].to_f > '.3'.to_f %>
+	<p>HAPPY</p>
+	<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX9XIFQuFvzM4" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<% end %>
+
+<% if @data[0]['faceAttributes']['emotion']['neutral'].to_f > '.3'.to_f %>
+	<p>NEUTRAL</p>
+	<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWXLeA8Omikj7" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<% end %>
+
+<% if @data[0]['faceAttributes']['emotion']['surprise'].to_f > '.3'.to_f %>
+	<p>SURPRISE</p>
+	<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3PIPIT6lEg5" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<% end %>
 
 <% @data[0]['faceAttributes']['emotion'].each do |key,value| %>
 	<% if value > 0 %>

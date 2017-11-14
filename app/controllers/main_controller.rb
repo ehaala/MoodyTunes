@@ -3,7 +3,6 @@ class MainController < ApplicationController
   end
 
   def show
-
 		uri = URI('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect')
 		uri.query = URI.encode_www_form({
 		    # Request parameters
@@ -12,7 +11,6 @@ class MainController < ApplicationController
 		    'returnFaceLandmarks' => 'false',
 		    'returnFaceAttributes' => 'emotion'
 		})
-
 		request = Net::HTTP::Post.new(uri.request_uri)
 		# Request headers
 		request['Content-Type'] = 'application/json'
@@ -29,9 +27,7 @@ class MainController < ApplicationController
 		response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
 		    http.request(request)
 		end
-
 		@data = JSON.parse(response.body)
-
   end
 
 end
