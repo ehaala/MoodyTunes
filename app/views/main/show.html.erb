@@ -1,0 +1,16 @@
+<h1>RESULTS</h1>
+
+<iframe src="https://open.spotify.com/embed?uri=spotify:user:ehaala:playlist:4J8E3JE9pHEalySzCpTDCw"
+        width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+<br />
+
+<img src="<%= @url %>" height="200px">
+
+<br />
+
+<% @data[0]['faceAttributes']['emotion'].each do |key,value| %>
+	<% if value > 0 %>
+		<p><%= key %>: <%= value  %></p>
+	<% end %>
+<% end %>
