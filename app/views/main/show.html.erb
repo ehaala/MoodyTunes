@@ -6,7 +6,7 @@
 			<div class="col-md-12 stats boxshadow">
 				<% @data[0]['faceAttributes']['emotion'].each do |key,value| %>
 					<% if value > 0 %>
-						<p><%= key.capitalize %>: <%= value  %></p>
+						<p><%= Integer(value * 10000)/ Float(100) %>% <%= key.capitalize %></p>
 					<% end %>
 				<% end %>
 			</div>

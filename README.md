@@ -1,24 +1,27 @@
-# README
+# MoodyTunes #
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Users can upload a portrait of themselves or a photo that they find on the internet that expresses their current emotions. Using the Azure Face API, users will receieve a list of the emotions that are most likely being expressed by the person in the photo.
 
-Things you may want to cover:
+#### User Stories ####
+* Benito is down in the dumps and needs something to cheer him. By uploading a portrait that expresses his emotions, he can find a variety of music catered to his needs.
+* Draco has listened to all of his songs way too many times and needs some new music to listen to.
 
-* Ruby version
+#### Planning ####
 
-* System dependencies
+![Alt text]()
 
-* Configuration
+#### Routes ####
 
-* Database creation
+Method | URL | Purpose
+------ | --- | -------
+GET | / | home page
 
-* Database initialization
+#### Tech Used ####
+* Ruby on Rails
+* Microsoft Azure Faces API
 
-* How to run the test suite
+#### Credits ####
+* 
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### Next Steps ####
+* 
