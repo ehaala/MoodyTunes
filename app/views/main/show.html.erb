@@ -4,10 +4,19 @@
 
 <br />
 
-<% if @data[0]['faceAttributes']['emotion']['anger'].to_f > '.3'.to_f %>
-	<p>ANGRY</p>
-	<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3YSRoSdA634" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<%= form_for @favorite do |form| %>
+
+	<% if @data[0]['faceAttributes']['emotion']['anger'].to_f > '.3'.to_f %>
+		<p>ANGRY</p>
+		<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3YSRoSdA634" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+	<% end %>
+	<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3YSRoSdA634' %>
+	<%= form.hidden_field :user_id, :value => @current_user.id %>
+	<%= form.submit %>
 <% end %>
+
+
+
 
 <% if @data[0]['faceAttributes']['emotion']['contempt'].to_f > '.3'.to_f %>
 	<p>CONTEMPT</p>

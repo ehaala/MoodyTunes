@@ -1,8 +1,17 @@
 class MainController < ApplicationController
+	before_action :current_user, :is_authenticated
+
   def index
   end
 
+  def create
+  	Favorite.create(favorite_params)
+  	redirect_to favorites_path
+  end
+
   def show
+  	@favorite = Favorite.new
+
 		uri = URI('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect')
 		uri.query = URI.encode_www_form({
 		    # Request parameters
@@ -28,6 +37,10 @@ class MainController < ApplicationController
 		    http.request(request)
 		end
 		@data = JSON.parse(response.body)
+  end
+
+  def favorite_params
+  	params.require(:favorite).permit(:url, :user_id)
   end
 
 end

@@ -1,10 +1,12 @@
 <nav class="navbar fixed-top navbar-light bg-faded">
   <a class="navbar-brand" href="/">MoodyTunes</a>
+  <a class="navbar-brand" href="/favorites">MyMoods</a>
 	
 	<% if @current_user %>
 		<a href="/logout" class="right">Logout</a>
 	<% else %>
 		<a href="/login" class="right">Login</a>
+		<p class="right">|</p>
 		<a href="/user" class="right">Sign Up</a>
 	<% end %>
 
