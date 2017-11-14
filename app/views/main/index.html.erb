@@ -1,7 +1,3 @@
-<% if @current_user %>
-	<p>Logged in as: <%= @current_user.try(:email) %></p>
-<% end %>
-
 <% if !@current_user %>
 	<p>Sign up or Log in!</p>
 <% end %>

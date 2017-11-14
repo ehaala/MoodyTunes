@@ -4,6 +4,7 @@
 	
 	<% if @current_user %>
 		<a href="/logout" class="right">Logout</a>
+		<p class="right"><%= @current_user.try(:email) %></p>
 	<% else %>
 		<a href="/login" class="right">Login</a>
 		<p class="right">|</p>
