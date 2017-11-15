@@ -15,9 +15,9 @@ body {
   font-size: 18px;
   color: #303030;
   color: white;
-	background: #4ECDC4;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #556270, #4ECDC4);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #556270, #4ECDC4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #282828;
+	background: white;
+	font-weight: lighter;
 }
 
 iframe {
@@ -26,11 +26,20 @@ iframe {
 }
 
 a {
-	color: #4ECDC4;
+	color: #2AB759;
 }
 
 a:hover {
 	color: white;
+	text-shadow: 2px 2px 4px white;
+}
+
+h1 {
+	color: #2AB759;
+}
+
+hr {
+	border-top: solid #2AB759 1px;
 }
 
 .row {
@@ -39,12 +48,15 @@ a:hover {
 
 .button {
 	color: black;
-	background: #4ECDC4;
+	background: #2AB759;
+	border: solid black 1px;
 }
 
 .button:hover {
 	box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.5), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-	background: #556270;
+	background: black;
+	color: #2AB759;
+	border: solid #2AB759 1px;
 }
 
 .home {
@@ -69,6 +81,7 @@ a:hover {
 	background: #282828;
 	color: white;
 	border-radius: 0;
+	border-bottom: solid #2AB759 2px;
 }
 
 .right {
@@ -83,6 +96,10 @@ a:hover {
 .modak {
 	font-family: Modak;
 	font-size: 3em;
+}
+
+.shadow {
+	text-shadow: 2px 2px 4px black;
 }
 
 .boxshadow {
@@ -107,4 +124,8 @@ a:hover {
 
 .dark {
 	color: black;
+}
+
+.lightback {
+	background: white;
 }
