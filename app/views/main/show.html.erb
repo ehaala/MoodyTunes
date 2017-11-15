@@ -1,77 +1,79 @@
-<div class="row">
-	<div class="col-md-6 results boxshadow marginbtm">
-		<img class="boxshadow upload" src="<%= @url %>">
+<%# ERROR HANDLING FOR INVALID IMAGE %>
+<% if @data == nil %>
+	<h1>Oops. We were unable to analyze your image.</h1>
+	<img class="boxshadow" src="http://cdn.list25.com/wp-content/uploads/2015/01/failgif7.gif">
+<% elsif @data[0] == nil %>
+	<h1>Oops. We were unable to analyze your image.</h1>
+	<img class="boxshadow" src="http://cdn.list25.com/wp-content/uploads/2015/01/failgif7.gif">
+<% else %>
 
-		<div class="row">
-			<div class="col-md-12 stats boxshadow">
-				<% @data[0]['faceAttributes']['emotion'].each do |key,value| %>
-					<% if value > 0 %>
-						<p><%= Integer(value * 10000)/ Float(100) %>% <%= key.capitalize %></p>
+	<div class="row">
+
+		<div class="col-md-6 results boxshadow marginbtm">
+			<img class="boxshadow upload" src="<%= @url %>">
+			<div class="row">
+				<div class="col-md-12 stats boxshadow">
+					<% @data[0]['faceAttributes']['emotion'].each do |key,value| %>
+						<% if value > 0 %>
+							<p><%= Integer(value * 10000)/ Float(100) %>% <%= key.capitalize %></p>
+						<% end %>
 					<% end %>
-				<% end %>
+				</div>
 			</div>
+		</div>
+
+		<div class="col-md-1"></div>
+
+		<div class="col-md-5 results boxshadow">
+			<p>Based on your results, you may like the following playlists:</p>
+			<%= form_for @favorite do |form| %>
+				<% if @data[0]['faceAttributes']['emotion']['anger'].to_f > '.3'.to_f %>
+					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3YSRoSdA634" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3YSRoSdA634' %>
+					<%= form.hidden_field :user_id, :value => @current_user.id %>
+				<% end %>
+				<% if @data[0]['faceAttributes']['emotion']['contempt'].to_f > '.3'.to_f %>
+					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWVu0D7Y8cYcs" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWVu0D7Y8cYcs' %>
+					<%= form.hidden_field :user_id, :value => @current_user.id %>
+				<% end %>
+				<% if @data[0]['faceAttributes']['emotion']['disgust'].to_f > '.3'.to_f %>
+					<p>Move On and Don't Look Back</p>
+					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWYMvTygsLWlG" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWYMvTygsLWlG' %>
+					<%= form.hidden_field :user_id, :value => @current_user.id %>
+				<% end %>
+				<% if @data[0]['faceAttributes']['emotion']['fear'].to_f > '.3'.to_f %>
+					<p>Relax and Unwind</p>
+					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWU0ScTcjJBdj" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWU0ScTcjJBdj' %>
+					<%= form.hidden_field :user_id, :value => @current_user.id %>
+				<% end %>
+				<% if @data[0]['faceAttributes']['emotion']['sadness'].to_f > '.3'.to_f %>
+					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3rxVfibe1L0" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3rxVfibe1L0' %>
+					<%= form.hidden_field :user_id, :value => @current_user.id %>
+				<% end %>
+				<% if @data[0]['faceAttributes']['emotion']['happiness'].to_f > '.3'.to_f %>
+					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX9XIFQuFvzM4" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX9XIFQuFvzM4' %>
+					<%= form.hidden_field :user_id, :value => @current_user.id %>
+				<% end %>
+				<% if @data[0]['faceAttributes']['emotion']['neutral'].to_f > '.3'.to_f %>
+					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWXLeA8Omikj7" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWXLeA8Omikj7' %>
+					<%= form.hidden_field :user_id, :value => @current_user.id %>
+				<% end %>
+				<% if @data[0]['faceAttributes']['emotion']['surprise'].to_f > '.3'.to_f %>
+					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3PIPIT6lEg5" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3PIPIT6lEg5' %>
+					<%= form.hidden_field :user_id, :value => @current_user.id %>
+				<% end %>
+				<br >
+				<%= form.submit 'Add Playlist', :class => 'button' %>
+			<% end %>
 		</div>
 
 	</div>
 
-	<div class="col-md-1"></div>
-
-	<div class="col-md-5 results boxshadow">
-		<p>Based on your results, you may like the following playlists:</p>
-		<%= form_for @favorite do |form| %>
-
-			<% if @data[0]['faceAttributes']['emotion']['anger'].to_f > '.3'.to_f %>
-				<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3YSRoSdA634" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-				<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3YSRoSdA634' %>
-				<%= form.hidden_field :user_id, :value => @current_user.id %>
-			<% end %>
-
-			<% if @data[0]['faceAttributes']['emotion']['contempt'].to_f > '.3'.to_f %>
-				<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWVu0D7Y8cYcs" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-				<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWVu0D7Y8cYcs' %>
-				<%= form.hidden_field :user_id, :value => @current_user.id %>
-			<% end %>
-
-			<% if @data[0]['faceAttributes']['emotion']['disgust'].to_f > '.3'.to_f %>
-				<p>Move On and Don't Look Back</p>
-				<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWYMvTygsLWlG" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-				<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWYMvTygsLWlG' %>
-				<%= form.hidden_field :user_id, :value => @current_user.id %>
-			<% end %>
-
-			<% if @data[0]['faceAttributes']['emotion']['fear'].to_f > '.3'.to_f %>
-				<p>Relax and Unwind</p>
-				<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWU0ScTcjJBdj" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-				<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWU0ScTcjJBdj' %>
-				<%= form.hidden_field :user_id, :value => @current_user.id %>
-			<% end %>
-
-			<% if @data[0]['faceAttributes']['emotion']['sadness'].to_f > '.3'.to_f %>
-				<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3rxVfibe1L0" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-				<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3rxVfibe1L0' %>
-				<%= form.hidden_field :user_id, :value => @current_user.id %>
-			<% end %>
-
-			<% if @data[0]['faceAttributes']['emotion']['happiness'].to_f > '.3'.to_f %>
-				<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX9XIFQuFvzM4" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-				<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX9XIFQuFvzM4' %>
-				<%= form.hidden_field :user_id, :value => @current_user.id %>
-			<% end %>
-
-			<% if @data[0]['faceAttributes']['emotion']['neutral'].to_f > '.3'.to_f %>
-				<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWXLeA8Omikj7" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-				<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWXLeA8Omikj7' %>
-				<%= form.hidden_field :user_id, :value => @current_user.id %>
-			<% end %>
-
-			<% if @data[0]['faceAttributes']['emotion']['surprise'].to_f > '.3'.to_f %>
-				<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3PIPIT6lEg5" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-				<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3PIPIT6lEg5' %>
-				<%= form.hidden_field :user_id, :value => @current_user.id %>
-			<% end %>
-			<br >
-			<%= form.submit 'Add Playlist', :class => 'button' %>
-		<% end %>
-	</div>
-
-</div>
+<% end %>
