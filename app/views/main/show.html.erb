@@ -12,12 +12,17 @@
 		<div class="col-md-6 results boxshadow marginbtm">
 			<img class="boxshadow upload" src="<%= @url %>">
 			<div class="row">
-				<div class="col-md-12 stats boxshadow">
-					<% @data[0]['faceAttributes']['emotion'].each do |key,value| %>
-						<% if value > 0 %>
-							<p><%= Integer(value * 10000)/ Float(100) %>% <%= key.capitalize %></p>
-						<% end %>
-					<% end %>
+				<div class="col-md-12">
+					<%= bar_chart [
+						['Anger', @data[0]['faceAttributes']['emotion']['anger'].to_f * 10],
+						['Contempt', @data[0]['faceAttributes']['emotion']['contempt'].to_f * 10],
+						['Disgust', @data[0]['faceAttributes']['emotion']['disgust'].to_f * 10],
+						['Fear', @data[0]['faceAttributes']['emotion']['fear'].to_f * 10],
+						['Sadness', @data[0]['faceAttributes']['emotion']['sadness'].to_f * 10],
+						['Happiness', @data[0]['faceAttributes']['emotion']['happiness'].to_f * 10],
+						['Neutral', @data[0]['faceAttributes']['emotion']['neutral'].to_f * 10],
+						['Surprise', @data[0]['faceAttributes']['emotion']['surprise'].to_f * 10]
+					] %>
 				</div>
 			</div>
 		</div>
