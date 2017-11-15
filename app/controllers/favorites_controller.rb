@@ -18,6 +18,11 @@ class FavoritesController < ApplicationController
   def show
   end
 
+  def destroy
+    Favorite.find(params[:id]).delete
+    redirect_to favorites_path
+  end
+
   def favorite_params
   	params.require(:favorite).permit(:url, :user_id)
   end

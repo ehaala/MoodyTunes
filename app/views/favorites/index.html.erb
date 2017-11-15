@@ -1,5 +1,11 @@
 <h1>My Playlists</h1>
 
 <% @current_user.favorites.each do |fav| %>
-	<iframe class="boxshadow" src=<%= fav.url %> width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+	<div class="col-md-6">
+		<iframe class="boxshadow" src=<%= fav.url %> width="75%" height="380" frameborder="0" allowtransparency="true"></iframe>
+		<br>
+		<p class="inline">Created: <%= fav.created_at %></p>
+		<br>
+		<%= link_to "Remove", favorite_path(fav), method: :delete %>
+	</div>
 <% end %>
