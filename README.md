@@ -15,27 +15,14 @@ Users can upload a portrait of themselves or a photo that they find on the inter
 
 Method | URL | Purpose
 ------ | --- | -------
-GET | / | home page
+GET | / | home/landing page
 GET | /favorites | saved playlists
-
-
-  root 'user#home'
-
-  get 'favorites' => 'favorites#index'
-
-  get 'moods' => 'moods#index'
-
-  get 'search' =>'main#index'
-
-  get 'results' => 'main#show'
-
-  post 'results' => 'main#show'
-
-  get 'login' => 'sessions#new'
-
-  post 'login' => 'sessions#create'
-
-  get 'logout' => 'sessions#destroy'
+GET | /moods | saved moods (images w/ charts)
+GET | /search | the main page where users input urls
+GET | /results | results from api rendered w/ charts and playlists
+POST | /results | api request
+GET | /login | logging in
+GET | /logout | logging out
 
 #### Tech Used ####
 * Ruby on Rails
@@ -48,4 +35,4 @@ GET | /favorites | saved playlists
 * 
 
 #### Next Steps ####
-* 
+* Add option for users to upload images instead of just the URL

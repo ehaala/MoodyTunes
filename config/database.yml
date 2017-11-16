@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
   database: project4_production
   username: project4
   password: <%= ENV['PROJECT4_DATABASE_PASSWORD'] %>
