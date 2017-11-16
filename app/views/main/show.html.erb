@@ -1,61 +1,60 @@
 <%# ERROR HANDLING FOR INVALID IMAGE %>
 <% if @data == nil %>
-	<h1>Hmmm... That doesn't seem like a valid image.</h1>
+	<h1 class="margintop marginbtm">Hmmm... That doesn't seem like a valid image.</h1>
 	<img class="boxshadow" src="http://cdn.list25.com/wp-content/uploads/2015/01/failgif7.gif">
 <% elsif @data[0] == nil %>
-	<h1>Oops. We were unable to analyze your image.</h1>
+	<h1 class="margintop marginbtm">Oops. We were unable to analyze your image.</h1>
 	<img class="boxshadow" src="http://cdn.list25.com/wp-content/uploads/2015/01/failgif7.gif">
 <% else %>
-	<h1 class="modak shadow marginbtm margintop">YourMood</h1>
+	<h1 class="modak shadow margintop">YourMood</h1>
 
 	<div class="row">
-
 		<div class="col-md-6">
 			<div class="row">
-				<div class="col-md-12 marginbtm">
-					<img class="boxshadow upload" src="<%= @url %>">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 results boxshadow">
+				<div class="col-md-12 boxshadow charts">
 					<ul class="mui-tabs__bar mui-tabs__bar--justified">
 					  <li class="mui--is-active"><a data-mui-toggle="tab" data-mui-controls="pane-justified-1">Bar Chart</a></li>
 					  <li><a data-mui-toggle="tab" data-mui-controls="pane-justified-2">Pie Chart</a></li>
 					</ul>
 					<div class="mui-tabs__pane mui--is-active" id="pane-justified-1">
 						<%= bar_chart [
-						['Anger', @data[0]['faceAttributes']['emotion']['anger'].to_f * 10],
-						['Contempt', @data[0]['faceAttributes']['emotion']['contempt'].to_f * 10],
-						['Disgust', @data[0]['faceAttributes']['emotion']['disgust'].to_f * 10],
-						['Fear', @data[0]['faceAttributes']['emotion']['fear'].to_f * 10],
-						['Sadness', @data[0]['faceAttributes']['emotion']['sadness'].to_f * 10],
-						['Happiness', @data[0]['faceAttributes']['emotion']['happiness'].to_f * 10],
-						['Neutral', @data[0]['faceAttributes']['emotion']['neutral'].to_f * 10],
-						['Surprise', @data[0]['faceAttributes']['emotion']['surprise'].to_f * 10]
+						['Anger', @anger.to_f * 10],
+						['Contempt', @contempt.to_f * 10],
+						['Disgust', @disgust.to_f * 10],
+						['Fear', @fear.to_f * 10],
+						['Sadness', @sadness.to_f * 10],
+						['Happiness', @happiness.to_f * 10],
+						['Neutral', @neutral.to_f * 10],
+						['Surprise', @surprise.to_f * 10]
 					], max: 10%>
 					</div>
 
 					<div class="mui-tabs__pane" id="pane-justified-2">
 						<%= pie_chart [
-						['Anger', @data[0]['faceAttributes']['emotion']['anger'].to_f * 10],
-						['Contempt', @data[0]['faceAttributes']['emotion']['contempt'].to_f * 10],
-						['Disgust', @data[0]['faceAttributes']['emotion']['disgust'].to_f * 10],
-						['Fear', @data[0]['faceAttributes']['emotion']['fear'].to_f * 10],
-						['Sadness', @data[0]['faceAttributes']['emotion']['sadness'].to_f * 10],
-						['Happiness', @data[0]['faceAttributes']['emotion']['happiness'].to_f * 10],
-						['Neutral', @data[0]['faceAttributes']['emotion']['neutral'].to_f * 10],
-						['Surprise', @data[0]['faceAttributes']['emotion']['surprise'].to_f * 10]
-					], legend: false, colors: ['#082110', '#0F4320', '#176430','#9BE8B5','#229649','#59D984','#1E8540','#DEF7E6'] %>
+						['Anger', @anger.to_f * 10],
+						['Contempt', @contempt.to_f * 10],
+						['Disgust', @disgust.to_f * 10],
+						['Fear', @fear.to_f * 10],
+						['Sadness', @sadness.to_f * 10],
+						['Happiness', @happiness.to_f * 10],
+						['Neutral', @neutral.to_f * 10],
+						['Surprise', @surprise.to_f * 10]
+					], legend: false, colors: ['#2a57b8', '#2a808f', '#2a729c','#2a64aa','#2aa966','#2a9b74','#2a8d81','#2ab759'] %>
 					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 marginbtm">
+					<img class="boxshadow upload" src="<%= @url %>">
 				</div>
 			</div>
 		</div>
 
 		<div class="col-md-1"></div>
 
-		<div class="col-md-5 results boxshadow">
+		<div class="col-md-5 results boxshadow playlists">
 			<p>Based on your results, you may like the following playlists:</p>
-			<% if @data[0]['faceAttributes']['emotion']['anger'].to_f > '.3'.to_f %>
+			<% if @anger.to_f > '.3'.to_f %>
 				<%= form_for @favorite do |form| %>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3YSRoSdA634" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3YSRoSdA634' %>
@@ -65,7 +64,7 @@
 				<% end %>
 			<% end %>
 
-			<% if @data[0]['faceAttributes']['emotion']['contempt'].to_f > '.3'.to_f %>
+			<% if @contempt.to_f > '.3'.to_f %>
 				<%= form_for @favorite do |form| %>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWVu0D7Y8cYcs" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWVu0D7Y8cYcs' %>
@@ -76,7 +75,7 @@
 			<% end %>
 
 
-			<% if @data[0]['faceAttributes']['emotion']['disgust'].to_f > '.3'.to_f %>
+			<% if @disgust.to_f > '.3'.to_f %>
 				<%= form_for @favorite do |form| %>
 					<p>Move On and Don't Look Back</p>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWYMvTygsLWlG" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
@@ -88,7 +87,7 @@
 			<% end %>
 
 
-			<% if @data[0]['faceAttributes']['emotion']['fear'].to_f > '.3'.to_f %>
+			<% if @fear.to_f > '.3'.to_f %>
 				<%= form_for @favorite do |form| %>
 					<p>Relax and Unwind</p>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWU0ScTcjJBdj" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
@@ -100,7 +99,7 @@
 			<% end %>
 
 
-			<% if @data[0]['faceAttributes']['emotion']['sadness'].to_f > '.3'.to_f %>
+			<% if @sadness.to_f > '.3'.to_f %>
 				<%= form_for @favorite do |form| %>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3rxVfibe1L0" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3rxVfibe1L0' %>
@@ -111,7 +110,7 @@
 			<% end %>
 
 
-			<% if @data[0]['faceAttributes']['emotion']['happiness'].to_f > '.3'.to_f %>
+			<% if @happiness.to_f > '.3'.to_f %>
 				<%= form_for @favorite do |form| %>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX9XIFQuFvzM4" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX9XIFQuFvzM4' %>
@@ -122,7 +121,7 @@
 			<% end %>
 
 
-			<% if @data[0]['faceAttributes']['emotion']['neutral'].to_f > '.3'.to_f %>
+			<% if @neutral.to_f > '.3'.to_f %>
 				<%= form_for @favorite do |form| %>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWXLeA8Omikj7" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWXLeA8Omikj7' %>
@@ -133,7 +132,7 @@
 			<% end %>
 
 
-			<% if @data[0]['faceAttributes']['emotion']['surprise'].to_f > '.3'.to_f %>
+			<% if @surprise.to_f > '.3'.to_f %>
 				<%= form_for @favorite do |form| %>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3PIPIT6lEg5" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3PIPIT6lEg5' %>

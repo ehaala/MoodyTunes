@@ -38,6 +38,14 @@ class MainController < ApplicationController
 		  http.request(request)
 		end
 		@data = JSON.parse(response.body)
+		@anger = @data[0]['faceAttributes']['emotion']['anger']
+		@contempt = @data[0]['faceAttributes']['emotion']['contempt']
+		@disgust = @data[0]['faceAttributes']['emotion']['disgust']
+		@fear = @data[0]['faceAttributes']['emotion']['fear']
+		@sadness = @data[0]['faceAttributes']['emotion']['sadness']
+		@happiness = @data[0]['faceAttributes']['emotion']['happiness']
+		@neutral = @data[0]['faceAttributes']['emotion']['neutral']
+		@surprise = @data[0]['faceAttributes']['emotion']['surprise']
 		end
 
   end

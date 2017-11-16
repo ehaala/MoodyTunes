@@ -21,6 +21,7 @@ GET | / | home page
 * Microsoft Azure Faces API
 * Bootstrap
 * Material Design
+* ChartJS
 
 #### Credits ####
 * 
