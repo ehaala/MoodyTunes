@@ -6,14 +6,24 @@
 	<h1>Oops. We were unable to analyze your image.</h1>
 	<img class="boxshadow" src="http://cdn.list25.com/wp-content/uploads/2015/01/failgif7.gif">
 <% else %>
+	<h1 class="modak shadow marginbtm margintop">YourMood</h1>
 
 	<div class="row">
 
-		<div class="col-md-6 results boxshadow marginbtm">
-			<img class="boxshadow upload" src="<%= @url %>">
+		<div class="col-md-6">
 			<div class="row">
-				<div class="col-md-12">
-					<%= bar_chart [
+				<div class="col-md-12 marginbtm">
+					<img class="boxshadow upload" src="<%= @url %>">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 results boxshadow">
+					<ul class="mui-tabs__bar mui-tabs__bar--justified">
+					  <li class="mui--is-active"><a data-mui-toggle="tab" data-mui-controls="pane-justified-1">Bar Chart</a></li>
+					  <li><a data-mui-toggle="tab" data-mui-controls="pane-justified-2">Pie Chart</a></li>
+					</ul>
+					<div class="mui-tabs__pane mui--is-active" id="pane-justified-1">
+						<%= bar_chart [
 						['Anger', @data[0]['faceAttributes']['emotion']['anger'].to_f * 10],
 						['Contempt', @data[0]['faceAttributes']['emotion']['contempt'].to_f * 10],
 						['Disgust', @data[0]['faceAttributes']['emotion']['disgust'].to_f * 10],
@@ -22,7 +32,21 @@
 						['Happiness', @data[0]['faceAttributes']['emotion']['happiness'].to_f * 10],
 						['Neutral', @data[0]['faceAttributes']['emotion']['neutral'].to_f * 10],
 						['Surprise', @data[0]['faceAttributes']['emotion']['surprise'].to_f * 10]
-					] %>
+					], max: 10%>
+					</div>
+
+					<div class="mui-tabs__pane" id="pane-justified-2">
+						<%= pie_chart [
+						['Anger', @data[0]['faceAttributes']['emotion']['anger'].to_f * 10],
+						['Contempt', @data[0]['faceAttributes']['emotion']['contempt'].to_f * 10],
+						['Disgust', @data[0]['faceAttributes']['emotion']['disgust'].to_f * 10],
+						['Fear', @data[0]['faceAttributes']['emotion']['fear'].to_f * 10],
+						['Sadness', @data[0]['faceAttributes']['emotion']['sadness'].to_f * 10],
+						['Happiness', @data[0]['faceAttributes']['emotion']['happiness'].to_f * 10],
+						['Neutral', @data[0]['faceAttributes']['emotion']['neutral'].to_f * 10],
+						['Surprise', @data[0]['faceAttributes']['emotion']['surprise'].to_f * 10]
+					], legend: false, colors: ['#082110', '#0F4320', '#176430','#9BE8B5','#229649','#59D984','#1E8540','#DEF7E6'] %>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -31,51 +55,92 @@
 
 		<div class="col-md-5 results boxshadow">
 			<p>Based on your results, you may like the following playlists:</p>
-			<%= form_for @favorite do |form| %>
-				<% if @data[0]['faceAttributes']['emotion']['anger'].to_f > '.3'.to_f %>
+			<% if @data[0]['faceAttributes']['emotion']['anger'].to_f > '.3'.to_f %>
+				<%= form_for @favorite do |form| %>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3YSRoSdA634" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3YSRoSdA634' %>
 					<%= form.hidden_field :user_id, :value => @current_user.id %>
+					<br >
+					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
 				<% end %>
-				<% if @data[0]['faceAttributes']['emotion']['contempt'].to_f > '.3'.to_f %>
+			<% end %>
+
+			<% if @data[0]['faceAttributes']['emotion']['contempt'].to_f > '.3'.to_f %>
+				<%= form_for @favorite do |form| %>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWVu0D7Y8cYcs" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWVu0D7Y8cYcs' %>
 					<%= form.hidden_field :user_id, :value => @current_user.id %>
+					<br >
+					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
 				<% end %>
-				<% if @data[0]['faceAttributes']['emotion']['disgust'].to_f > '.3'.to_f %>
+			<% end %>
+
+
+			<% if @data[0]['faceAttributes']['emotion']['disgust'].to_f > '.3'.to_f %>
+				<%= form_for @favorite do |form| %>
 					<p>Move On and Don't Look Back</p>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWYMvTygsLWlG" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWYMvTygsLWlG' %>
 					<%= form.hidden_field :user_id, :value => @current_user.id %>
+					<br >
+					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
 				<% end %>
-				<% if @data[0]['faceAttributes']['emotion']['fear'].to_f > '.3'.to_f %>
+			<% end %>
+
+
+			<% if @data[0]['faceAttributes']['emotion']['fear'].to_f > '.3'.to_f %>
+				<%= form_for @favorite do |form| %>
 					<p>Relax and Unwind</p>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWU0ScTcjJBdj" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWU0ScTcjJBdj' %>
 					<%= form.hidden_field :user_id, :value => @current_user.id %>
+					<br >
+					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
 				<% end %>
-				<% if @data[0]['faceAttributes']['emotion']['sadness'].to_f > '.3'.to_f %>
+			<% end %>
+
+
+			<% if @data[0]['faceAttributes']['emotion']['sadness'].to_f > '.3'.to_f %>
+				<%= form_for @favorite do |form| %>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3rxVfibe1L0" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3rxVfibe1L0' %>
 					<%= form.hidden_field :user_id, :value => @current_user.id %>
+					<br >
+					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
 				<% end %>
-				<% if @data[0]['faceAttributes']['emotion']['happiness'].to_f > '.3'.to_f %>
+			<% end %>
+
+
+			<% if @data[0]['faceAttributes']['emotion']['happiness'].to_f > '.3'.to_f %>
+				<%= form_for @favorite do |form| %>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX9XIFQuFvzM4" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX9XIFQuFvzM4' %>
 					<%= form.hidden_field :user_id, :value => @current_user.id %>
+					<br >
+					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
 				<% end %>
-				<% if @data[0]['faceAttributes']['emotion']['neutral'].to_f > '.3'.to_f %>
+			<% end %>
+
+
+			<% if @data[0]['faceAttributes']['emotion']['neutral'].to_f > '.3'.to_f %>
+				<%= form_for @favorite do |form| %>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWXLeA8Omikj7" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWXLeA8Omikj7' %>
 					<%= form.hidden_field :user_id, :value => @current_user.id %>
+					<br >
+					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
 				<% end %>
-				<% if @data[0]['faceAttributes']['emotion']['surprise'].to_f > '.3'.to_f %>
+			<% end %>
+
+
+			<% if @data[0]['faceAttributes']['emotion']['surprise'].to_f > '.3'.to_f %>
+				<%= form_for @favorite do |form| %>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3PIPIT6lEg5" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX3PIPIT6lEg5' %>
 					<%= form.hidden_field :user_id, :value => @current_user.id %>
+					<br >
+					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
 				<% end %>
-				<br >
-				<%= form.submit 'Add Playlist', :class => 'button' %>
 			<% end %>
 		</div>
 

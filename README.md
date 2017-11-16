@@ -19,6 +19,8 @@ GET | / | home page
 #### Tech Used ####
 * Ruby on Rails
 * Microsoft Azure Faces API
+* Bootstrap
+* Material Design
 
 #### Credits ####
 * 

@@ -4,8 +4,8 @@
 	<div class="col-md-6">
 		<iframe class="boxshadow" src=<%= fav.url %> width="75%" height="380" frameborder="0" allowtransparency="true"></iframe>
 		<br>
-		<p class="inline">Created: <%= fav.created_at %></p>
+		<p class="inline dark">Created: <%= fav.created_at %></p>
 		<br>
-		<%= link_to "Remove", favorite_path(fav), method: :delete %>
+		<%= link_to 'Remove', favorite_path(fav), method: :delete, :class => 'mui-btn mui-btn--primary button' %>
 	</div>
 <% end %>

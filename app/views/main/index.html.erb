@@ -6,11 +6,12 @@
 	<div class="col-md-2"></div>
 	<div class="col-md-8 home boxshadow">
 		<p>Welcome to...</p>
-		<h1 class="modak">MoodyTunes</h1>
+		<h1 class="modak shadow margintop marginbtm">MoodyTunes</h1>
 		<p>Start by entering an image url below!</p>
 		<%= form_tag results_path do %>
 		  <%= text_field_tag :url, "", class: 'dark' %>
-		 	<%= submit_tag "Submit", :class => 'button' %>
+		  <br>
+		 	<%= submit_tag "GO!", :class => 'mui-btn mui-btn--primary button' %>
 		<% end %>
 	</div>
 	<div class="col-md-2"></div>

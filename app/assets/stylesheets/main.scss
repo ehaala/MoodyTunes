@@ -31,7 +31,6 @@ a {
 
 a:hover {
 	color: white;
-	text-shadow: 2px 2px 4px white;
 }
 
 h1 {
@@ -66,7 +65,7 @@ hr {
 }
 
 .results {
-	padding: 1%;
+	padding: 2%;
 	background: #282828;
 }
 
@@ -103,6 +102,7 @@ hr {
 .modak {
 	font-family: Modak;
 	font-size: 3em;
+	text-decoration: underline;
 }
 
 .shadow {
@@ -119,6 +119,12 @@ hr {
 
 .marginbtm {
 	margin-bottom: 50px;
+}
+
+.emphasis {
+	color: #2AB759;
+	font-weight: bold;
+	font-style: italic;
 }
 
 .inline {
