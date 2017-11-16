@@ -19,7 +19,7 @@ class MainController < ApplicationController
 		    'returnFaceLandmarks' => 'false',
 		    'returnFaceAttributes' => 'emotion'
 		})
-		request = Net::HTTP::Post.new(uri.request_uri)
+		request = Net::HTTPS::Post.new(uri.request_uri)
 		# Request headers
 		request['Content-Type'] = 'application/json'
 		# NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.

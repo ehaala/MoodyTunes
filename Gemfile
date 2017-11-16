@@ -33,6 +33,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'chartkick'
 gem 'groupdate'
 gem 'rails_12factor', group: :production
+gem 'httparty'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
