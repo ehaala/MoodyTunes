@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171114184033) do
+ActiveRecord::Schema.define(version: 20171116195621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,22 @@ ActiveRecord::Schema.define(version: 20171114184033) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "moods", force: :cascade do |t|
+    t.string "image"
+    t.string "anger"
+    t.string "contempt"
+    t.string "disgust"
+    t.string "fear"
+    t.string "sadness"
+    t.string "happiness"
+    t.string "neutral"
+    t.string "surprise"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_moods_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -31,4 +47,5 @@ ActiveRecord::Schema.define(version: 20171114184033) do
   end
 
   add_foreign_key "favorites", "users"
+  add_foreign_key "moods", "users"
 end

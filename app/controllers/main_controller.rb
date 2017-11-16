@@ -5,12 +5,11 @@ class MainController < ApplicationController
   end
 
   def create
-  	Favorite.create(favorite_params)
-  	redirect_to favorites_path
   end
 
   def show
   	@favorite = Favorite.new
+  	@mood = Mood.new
 
 		uri = URI('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect')
 		uri.query = URI.encode_www_form({
@@ -48,10 +47,6 @@ class MainController < ApplicationController
 		@surprise = @data[0]['faceAttributes']['emotion']['surprise']
 		end
 
-  end
-
-  def favorite_params
-  	params.require(:favorite).permit(:url, :user_id)
   end
 
 end

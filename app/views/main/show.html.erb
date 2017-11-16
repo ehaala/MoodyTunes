@@ -46,6 +46,22 @@
 			<div class="row">
 				<div class="col-md-12 marginbtm">
 					<img class="boxshadow upload" src="<%= @url %>">
+
+					<%= form_for @mood do |form| %>
+						<%= form.hidden_field :image, :value => @url %>
+						<%= form.hidden_field :anger, :value => @anger %>
+						<%= form.hidden_field :contempt, :value => @contempt %>
+						<%= form.hidden_field :disgust, :value => @disgust %>
+						<%= form.hidden_field :fear, :value => @fear %>
+						<%= form.hidden_field :sadness, :value => @sadness %>
+						<%= form.hidden_field :happiness, :value => @happiness %>
+						<%= form.hidden_field :neutral, :value => @neutral %>
+						<%= form.hidden_field :surprise, :value => @surprise %>
+						<%= form.hidden_field :user_id, :value => @current_user.id %>
+						<br >
+						<%= form.submit 'Save Mood', :class => 'mui-btn mui-btn--primary button' %>
+					<% end %>
+
 				</div>
 			</div>
 		</div>
