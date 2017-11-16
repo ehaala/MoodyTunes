@@ -8,14 +8,34 @@ Users can upload a portrait of themselves or a photo that they find on the inter
 
 #### Planning ####
 
-![Alt text](/screen1.png)
-![Alt text](/screen2.png)
+![Alt text](public/screen1.png)
+![Alt text](public/screen2.png)
 
 #### Routes ####
 
 Method | URL | Purpose
 ------ | --- | -------
 GET | / | home page
+GET | /favorites | saved playlists
+
+
+  root 'user#home'
+
+  get 'favorites' => 'favorites#index'
+
+  get 'moods' => 'moods#index'
+
+  get 'search' =>'main#index'
+
+  get 'results' => 'main#show'
+
+  post 'results' => 'main#show'
+
+  get 'login' => 'sessions#new'
+
+  post 'login' => 'sessions#create'
+
+  get 'logout' => 'sessions#destroy'
 
 #### Tech Used ####
 * Ruby on Rails
