@@ -1,11 +1,13 @@
-<h1 class="modak margintop marginbtm shadow">MyTunes</h1>
+<h1 class="modak margintop shadow">MyTunes</h1>
 
-<% @current_user.favorites.each do |fav| %>
-	<div class="col-md-6">
-		<iframe class="boxshadow" src=<%= fav.url %> width="75%" height="380" frameborder="0" allowtransparency="true"></iframe>
-		<br>
-		<p class="inline dark">Created: <%= fav.created_at %></p>
-		<br>
-		<%= link_to 'Remove', favorite_path(fav), method: :delete, :class => 'mui-btn mui-btn--primary button' %>
-	</div>
-<% end %>
+<div class="row extrapad">
+	<% @current_user.favorites.each do |fav| %>
+		<div class="col-md-6">
+			<iframe class="boxshadow" src=<%= fav.url %> width="75%" height="380" frameborder="0" allowtransparency="true"></iframe>
+			<br>
+			<p class="inline dark">Created: <%= fav.created_at %></p>
+			<br>
+			<%= link_to 'Remove', favorite_path(fav), method: :delete, :class => 'mui-btn mui-btn--primary button' %>
+		</div>
+	<% end %>
+</div>

@@ -8,7 +8,8 @@ Users can upload a portrait of themselves or a photo that they find on the inter
 
 #### Planning ####
 
-![Alt text]()
+![Alt text](/screen1.png)
+![Alt text](/screen2.png)
 
 #### Routes ####
 
