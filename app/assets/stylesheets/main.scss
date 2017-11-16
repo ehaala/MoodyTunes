@@ -130,6 +130,18 @@ hr {
 	margin-bottom: 50px;
 }
 
+.maxheight {
+	height: 500px;
+}
+
+.moods {
+	width: 90%;
+	height: 90%;
+	max-height: 300px;
+	object-fit: contain;
+	overflow: hidden;
+}
+
 .emphasis {
 	color: #2AB759;
 	font-weight: bold;
