@@ -78,6 +78,13 @@
 					<br >
 					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
 				<% end %>
+				<%= form_for @favorite do |form| %>
+					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWTl4y3vgJOXW" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
+					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWTl4y3vgJOXW' %>
+					<%= form.hidden_field :user_id, :value => @current_user.id %>
+					<br >
+					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
+				<% end %>
 			<% end %>
 
 			<% if @contempt.to_f > '.3'.to_f %>
@@ -123,6 +130,13 @@
 					<br >
 					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
 				<% end %>
+				<%= form_for @favorite do |form| %>
+					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX7QOv5kjbU68" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
+					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX7QOv5kjbU68' %>
+					<%= form.hidden_field :user_id, :value => @current_user.id %>
+					<br >
+					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
+				<% end %>
 			<% end %>
 
 
@@ -130,6 +144,13 @@
 				<%= form_for @favorite do |form| %>
 					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX9XIFQuFvzM4" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
 					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DX9XIFQuFvzM4' %>
+					<%= form.hidden_field :user_id, :value => @current_user.id %>
+					<br >
+					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
+				<% end %>
+				<%= form_for @favorite do |form| %>
+					<iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWY4xHQp97fN6" width="90%" height="380" frameborder="0" allowtransparency="true"></iframe>
+					<%= form.hidden_field :url, :value => 'https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWY4xHQp97fN6' %>
 					<%= form.hidden_field :user_id, :value => @current_user.id %>
 					<br >
 					<%= form.submit 'Add Playlist', :class => 'mui-btn mui-btn--primary button' %>
