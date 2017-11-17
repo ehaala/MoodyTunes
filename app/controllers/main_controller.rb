@@ -31,25 +31,25 @@ class MainController < ApplicationController
 		# error handling
 		res = @url.nil? rescue true
 		unless res
-		request3 = "\"}"
-		request.body = request1 + @url + request3
-		response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-		  http.request(request)
+			request3 = "\"}"
+			request.body = request1 + @url + request3
+			response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+			  http.request(request)
+			end
+			@data = JSON.parse(response.body)
+			if @data[0] === nil
+				#
+			else
+				@anger = @data[0]['faceAttributes']['emotion']['anger']
+				@contempt = @data[0]['faceAttributes']['emotion']['contempt']
+				@disgust = @data[0]['faceAttributes']['emotion']['disgust']
+				@fear = @data[0]['faceAttributes']['emotion']['fear']
+				@sadness = @data[0]['faceAttributes']['emotion']['sadness']
+				@happiness = @data[0]['faceAttributes']['emotion']['happiness']
+				@neutral = @data[0]['faceAttributes']['emotion']['neutral']
+				@surprise = @data[0]['faceAttributes']['emotion']['surprise']
+			end
 		end
-		@data = JSON.parse(response.body)
-		if @data.nil?
-			redirect_to root_path
-		end
-		@anger = @data[0]['faceAttributes']['emotion']['anger']
-		@contempt = @data[0]['faceAttributes']['emotion']['contempt']
-		@disgust = @data[0]['faceAttributes']['emotion']['disgust']
-		@fear = @data[0]['faceAttributes']['emotion']['fear']
-		@sadness = @data[0]['faceAttributes']['emotion']['sadness']
-		@happiness = @data[0]['faceAttributes']['emotion']['happiness']
-		@neutral = @data[0]['faceAttributes']['emotion']['neutral']
-		@surprise = @data[0]['faceAttributes']['emotion']['surprise']
-		end
-
   end
 
 end
