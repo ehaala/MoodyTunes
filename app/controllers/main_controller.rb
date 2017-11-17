@@ -37,6 +37,9 @@ class MainController < ApplicationController
 		  http.request(request)
 		end
 		@data = JSON.parse(response.body)
+		if @data.nil?
+			redirect_to root_path
+		end
 		@anger = @data[0]['faceAttributes']['emotion']['anger']
 		@contempt = @data[0]['faceAttributes']['emotion']['contempt']
 		@disgust = @data[0]['faceAttributes']['emotion']['disgust']
