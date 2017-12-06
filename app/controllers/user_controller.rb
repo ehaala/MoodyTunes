@@ -5,7 +5,16 @@ def index
 
   def create
     User.create(user_params)
-    redirect_to root_path
+    user = User.authenticate(user_params)
+
+    if user
+      session[:user_id] = user.id
+      flash[:success] = "User logged in!!"
+      redirect_to root_path
+    else
+      flash[:danger] = "Credentials Invalid!!"
+      redirect_to login_path
+    end
   end
 
   def edit
