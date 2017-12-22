@@ -13,12 +13,24 @@ body {
   text-align: center;
   font-family: Ubuntu;
   font-size: 18px;
-  color: #303030;
   color: white;
-	background: #282828;
 	background: white;
 	font-weight: lighter;
 }
+
+/*@media only screen and (max-width: 992px) {
+	body {
+		font-size: 30px;
+	}
+	.button {
+		font-size: 30px;
+		padding-top: 5px;
+		height: 50px;
+	}
+	.navbar-brand {
+		font-size: 30px;
+	}
+}*/
 
 iframe {
 	margin: 5px;
