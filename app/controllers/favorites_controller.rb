@@ -6,7 +6,7 @@ class FavoritesController < ApplicationController
 
   def create
   	Favorite.create(favorite_params)
-  	redirect_to favorites_path
+  	# redirect_to favorites_path
   end
 
   def index
